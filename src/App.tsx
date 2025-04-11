@@ -1,5 +1,5 @@
 import './App.css'
-import Index from './hooks/007-useCallBack/Index'
+import Index from './hooks/012-customHook/Index';
 
 function App() {
   return (
@@ -26,9 +26,21 @@ function App() {
       {/* <Cart /> */}
 
       {/* 007-useCallback */}
+      {/* <Index /> */}
+
+      {/* 008-useTransition */}
+      {/* <Index /> */}
+
+      {/* 009-useRef */}
+      {/* <Index /> */}
+
+      {/* 010-useId */}
+      {/* <Index /> */}
+
+      {/* 012-customHook */}
       <Index />
     </>
   )
 }
 
-export default App
+export default App;
