@@ -1,5 +1,4 @@
 import './App.css'
-import Index from './hooks/012-customHook/Index';
 
 function App() {
   return (
@@ -38,7 +37,13 @@ function App() {
       {/* <Index /> */}
 
       {/* 012-customHook */}
-      <Index />
+      {/* <Index /> */}
+
+      {/* 013-useImperativeHandle */}
+      {/* <UseImperativeHandleExample /> */}
+
+      {/* 014-useDebugValue */}
+      {/* <UseDebugValueExample /> */}
     </>
   )
 }

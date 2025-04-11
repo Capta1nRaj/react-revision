@@ -199,6 +199,48 @@ function useCounter(initialValue = 0) {
 }
 ```
 
+## 15. useImperativeHandle
+
+- Customizes the instance value that is exposed when using ref
+- Used with forwardRef to expose specific methods to parent components
+- Syntax: `useImperativeHandle(ref, createHandle, [deps])`
+- Common use cases:
+  - Exposing child component methods to parent
+  - Customizing ref behavior
+  - Implementing imperative APIs
+- Example:
+
+```javascript
+const FancyInput = forwardRef((props, ref) => {
+  const inputRef = useRef();
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    }
+  }));
+  return <input ref={inputRef} />;
+});
+```
+
+## 16. useDebugValue
+
+- Adds a label to custom hooks in React DevTools
+- Only works inside custom hooks
+- Syntax: `useDebugValue(value, format?)`
+- Useful for:
+  - Debugging custom hooks
+  - Providing additional information in DevTools
+  - Formatting complex values for inspection
+- Example:
+
+```javascript
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null);
+  useDebugValue(isOnline ? 'Online' : 'Offline');
+  return isOnline;
+}
+```
+
 ## Best Practices
 
 1. Keep hooks at the top level
@@ -208,3 +250,75 @@ function useCounter(initialValue = 0) {
 5. Consider performance implications
 6. Follow React's rules of hooks
 7. Document custom hooks thoroughly
+
+## Advanced Best Practices
+
+1. **Performance Optimization**
+   - Use useMemo for expensive calculations
+   - Use useCallback for function props
+   - Implement proper dependency arrays
+   - Consider using React.memo for pure components
+   - Use useTransition for non-urgent updates
+
+2. **TypeScript Integration**
+   - Properly type custom hooks
+   - Use generics for flexible hooks
+   - Define proper interfaces for hook returns
+   - Type refs correctly with useImperativeHandle
+   - Use proper event types
+
+3. **Testing Strategies**
+   - Test hooks in isolation
+   - Use @testing-library/react-hooks
+   - Mock external dependencies
+   - Test edge cases and error states
+   - Verify cleanup functions
+
+4. **Error Handling**
+   - Implement proper error boundaries
+   - Handle async errors in useEffect
+   - Provide fallback values
+   - Log errors appropriately
+   - Implement retry mechanisms
+
+5. **State Management**
+   - Use appropriate state management solutions
+   - Consider context for global state
+   - Implement proper state updates
+   - Handle derived state correctly
+   - Use reducer for complex state logic
+
+6. **Code Organization**
+   - Group related hooks together
+   - Extract complex logic into custom hooks
+   - Keep hooks focused and single-purpose
+   - Document hook dependencies
+   - Follow consistent naming conventions
+
+7. **Accessibility**
+   - Ensure proper ARIA attributes
+   - Handle keyboard navigation
+   - Manage focus properly
+   - Provide proper labels
+   - Consider screen readers
+
+8. **Security**
+   - Sanitize user input
+   - Handle sensitive data properly
+   - Implement proper authentication
+   - Use secure storage
+   - Follow security best practices
+
+9. **Server-Side Rendering**
+   - Handle hydration properly
+   - Manage client/server differences
+   - Implement proper data fetching
+   - Handle loading states
+   - Consider SEO implications
+
+10. **Documentation**
+    - Document hook parameters
+    - Provide usage examples
+    - Explain edge cases
+    - Document performance implications
+    - Include TypeScript types
